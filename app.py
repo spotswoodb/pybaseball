@@ -21,6 +21,12 @@ dataset = tablib.Dataset()
 with open(os.path.join(os.path.dirname(__file__), 'stats.csv')) as f:
     dataset.csv = f.read()
 
+
+@app.route('/')
+def index():
+    data = dataset.html
+    return render_template('index.html', data=data)
+
 # columns = ['last_name','first_name', 'player_id', 'year', 'player_age',	'xba', 'xslg',	'woba',	'xwoba', 'xobp', 'xiso', 'exit_velocity_avg', 'launch_angle_avg', 'sweet_spot_percent',	'barrel_batted_rate']
 # df = pd.read_csv('stats.csv', names=columns)
 
@@ -53,9 +59,7 @@ class Feedback(db.Model):
 
 # class ExitVelocityPercentiles2021LDFBEVPercentilesTable(html_file):
 
-@app.route('/')
-def index():
-    return render_template('index.html')
+    # return render_template('index.html')
 
 
 @app.route('/submit', methods=['POST'])
