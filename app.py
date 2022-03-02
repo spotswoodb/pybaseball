@@ -3,11 +3,12 @@ from flask import Flask, render_template, request
 from dotenv import load_dotenv
 from flask_sqlalchemy import SQLAlchemy
 import pandas as pd
+import tablib
 # from send_mail import send_mail
 
-a = pd.read_csv("Exit_Velocity_Percentiles_2021_LD_FB_EV_Percentiles_Table.csv")
-a.to_html("EVP_2021_LD_FB_EVP_Table.html")
-html_file = a.to_html()
+# a = pd.read_csv("Exit_Velocity_Percentiles_2021_LD_FB_EV_Percentiles_Table.csv")
+# a.to_html("EVP_2021_LD_FB_EVP_Table.html")
+# html_file = a.to_html()
 
 load_dotenv()
 POSTGRES_URI = os.environ.get('POSTGRES_URI')
@@ -15,6 +16,13 @@ POSTGRES_URI = os.environ.get('POSTGRES_URI')
 
 
 app = Flask(__name__)
+
+dataset = tablib.Dataset()
+
+# columns = ['last_name','first_name', 'player_id', 'year', 'player_age',	'xba', 'xslg',	'woba',	'xwoba', 'xobp', 'xiso', 'exit_velocity_avg', 'launch_angle_avg', 'sweet_spot_percent',	'barrel_batted_rate']
+# df = pd.read_csv('stats.csv', names=columns)
+
+# print(df.to_html())
 
 ENV = 'dev'
 
