@@ -18,6 +18,8 @@ POSTGRES_URI = os.environ.get('POSTGRES_URI')
 app = Flask(__name__)
 
 dataset = tablib.Dataset()
+with open(os.path.join(os.path.dirname(__file__), 'stats.csv')) as f:
+    dataset.csv = f.read()
 
 # columns = ['last_name','first_name', 'player_id', 'year', 'player_age',	'xba', 'xslg',	'woba',	'xwoba', 'xobp', 'xiso', 'exit_velocity_avg', 'launch_angle_avg', 'sweet_spot_percent',	'barrel_batted_rate']
 # df = pd.read_csv('stats.csv', names=columns)
