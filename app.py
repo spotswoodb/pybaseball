@@ -5,7 +5,7 @@ import pandas as pd
 
 app = Flask(__name__)
 file = pd.read_csv("stats.csv")
-file.to_csv('sample_data.csv', index=None)
+file.to_csv('stats.csv', index=None)
 
 @app.route('/')
 @app.route('/FirstStatcastTable')
