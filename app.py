@@ -4,13 +4,16 @@ from dotenv import load_dotenv
 from flask_sqlalchemy import SQLAlchemy
 import pandas as pd
 
-# file = pd.read_csv("stats.csv")
-# file.to_html('FirstStatcastTable.html')
 
 app = Flask(__name__)
+file = pd.read_csv("stats.csv")
+file.to_csv('sample_data.csv', index=None)
 
 @app.route('/')
-def index():
-    file = pd.read_csv("stats.csv")
-    file.to_html("FirstStatcastTable.html")
-    return render_template("FirstStatcastTable.html")
+@app.route('/FirstStatcastTable')
+def table():
+    data = pd.read_csv('stats.csv')
+    return render_template('table.html', tables=[data.to_html()], titles=[''])
+
+if __name__ == '__main__':
+    app.run(host="localhost", port=int('5000'))
