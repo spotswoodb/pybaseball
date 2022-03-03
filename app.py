@@ -11,7 +11,8 @@ file.to_csv('sample_data.csv', index=None)
 @app.route('/FirstStatcastTable')
 def table():
     data = pd.read_csv('stats.csv')
-    return render_template('table.html', tables=[data.to_html()], titles=[''])
+    return render_template('FirstStatcastTable.html', tables=[data.to_html()], titles=[''])
 
 if __name__ == '__main__':
-    app.run(host="localhost", port=int('5000'))
+    app.debug = True
+    app.run()
